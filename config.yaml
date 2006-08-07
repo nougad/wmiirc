@@ -1,0 +1,84 @@
+import:
+  - control/keyboard/qwerty
+  - control/mouse
+  - display/client
+  - display/color/zenburn
+  - display/desktop/xsetroot
+  - display/notice
+  - display/status/music/mpd
+  - display/status/network/vpn
+  - display/status/power/acpi
+  - display/status/spacer
+  - display/status/system/loadavg
+  - display/status/time
+  - display/status/volume/amixer
+  - display/tags
+
+prefer:
+  terminal: urxvt
+  browser: icecat
+  editor: mousepad
+  filer: thunar
+
+display:
+  bar: top
+  font: "-*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*"
+  border: 1
+  column:
+    mode: default
+    rule: |
+      /gimp/ -> 82+18
+      /im/   -> 80+20
+      /.*/ -> 62+38 # Golden Ratio
+  client:
+    - /.*psi.*/ : im
+    - /Pidgin.*/ : im
+    - /.*(CSSH|cssh).*/ : cssh
+    - /VLC.*/ : media
+    - /Firefox.*/ : web
+    - /IceCat.*/ : web
+    - /shellwin.*/ : shell
+    - /Thunderbird:.*/ : mail
+    - /gimp/ : zgimp
+    - /wireshark/: ws
+  status:
+    spacer:
+      position: 1
+    mpd:
+      position: 2
+      mouse_action:
+        right_click: launch_gmpc
+    vpn:
+      device:   tun0
+      position: 3
+    acpi:
+      battery:   BAT0
+      position: 4
+    loadavg:
+      position: 5
+    amixer:
+      mixer:    Master
+      position: 6
+    time:
+      position: 7
+
+control:
+  keyboard:
+    grabmod: Mod4
+
+    mod:     Mod4
+    move:    Mod4-Shift
+    swap:    Mod4-w
+    view:    Mod4-Shift-v
+    group:   Mod4-g
+    layout:  Mod4-z
+    arrange: Mod4-Shift-z
+  action:
+    launch_terminal: |
+      work = ENV['HOME']
+      require 'fileutils'
+      FileUtils.cd work do
+        launch CONFIG['prefer']['terminal'], "-name", "shellwin"
+      end
+    launch_gmpc: launch "gmpc"
+
