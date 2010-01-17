@@ -2,7 +2,7 @@ import:
   - control/keyboard/qwerty
   - control/mouse
   - display/client
-  - display/color/zenburn
+  - display/color/nougad
   - display/desktop/xsetroot
   - display/notice
   - display/status/music/mpd

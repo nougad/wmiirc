@@ -1,0 +1,8 @@
+display:
+  color:
+    desktop:  "#1f1f1f"
+    focus:    "#ffffff #111111 #040404" # PMenuSel
+    normal:   "#aaaaaa #222222 #343434" # Normal
+    error:    "#ffffff #aa0000 #000000" # ErrorMsg
+    notice:   "#efef8f #444444 #aaaa00" # Function
+    success:  "#00aa00 #1f1f1f #242424" # Number
