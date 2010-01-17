@@ -36,7 +36,7 @@ script:
           include Enumerable
         end
 
-        def initialize name, definition, position
+        def initialize name, definition
           @definition = definition
 
           if code = definition['script']
@@ -51,7 +51,7 @@ script:
 
           # buttons appear in ASCII order of their IXP file name
           # so prepend a number to get ordered status bar applets
-          file = "#{position}-#{name}"
+          file = "#{@definition['position']||0}-#{name}"
           @button = fs.rbar[file]
 
           @refresh = Thread.new do
@@ -114,8 +114,7 @@ script:
       # populate the status bar
       fs.rbar.clear
 
-      CONFIG['display']['status'].each_with_index do |hash, position|
-        name, definition = hash.to_a.first
-        Status.new name, definition, position
+      CONFIG['display']['status'].each_pair do |name, definition|
+        Status.new name, definition
       end
 
