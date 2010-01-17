@@ -81,4 +81,5 @@ control:
         launch CONFIG['prefer']['terminal'], "-name", "shellwin"
       end
     launch_gmpc: launch "gmpc"
+    show_acpi_stats: dialog `acpitool`
 
