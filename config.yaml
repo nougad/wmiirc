@@ -97,3 +97,8 @@ control:
     lock_display: launch "xscreensaver-command", "-lock"
     screenshot:   launch "scrot"
 
+script:
+  - after: |
+      launch "xscreensaver"
+      launch "mpd"
+
