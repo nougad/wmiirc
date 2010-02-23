@@ -31,16 +31,18 @@ display:
       /im/   -> 80+20
       /.*/ -> 62+38 # Golden Ratio
   client:
-    - /.*psi.*/ : im
-    - /Pidgin.*/ : im
+    - /.*psi.*/ : 1:im
+    - /Pidgin.*/ : 1:im
     - /.*(CSSH|cssh).*/ : cssh
     - /VLC.*/ : media
-    - /Firefox.*/ : web
-    - /IceCat.*/ : web
-    - /shellwin.*/ : shell
-    - /Thunderbird:.*/ : mail
-    - /gimp/ : zgimp
+    - /Firefox.*/ : 4:web
+    - /IceCat.*/ : 4:web
+    - /shellwin.*/ : 3:shell
+    - /Thunderbird:.*/ : 2:mail
+    - /Skype:.*/ : 1:im
+    - /gimp/ : gimp
     - /wireshark/: ws
+    - /.*Eclipse.*/: ecl
   status:
     spacer:
       position: 1
