@@ -75,6 +75,8 @@ control:
     group:   Mod4-g
     layout:  Mod4-z
     arrange: Mod4-Shift-z
+    prev: p
+    next: n
 
   keyboard_action:
     ${mod}-o: run_program_from_menu
