@@ -7,6 +7,7 @@ import:
   - display/notice
   - display/status/music/mpd
   - display/status/network/vpn
+  - display/status/network/ipaddr
   - display/status/power/acpi
   - display/status/spacer
   - display/status/system/loadavg
@@ -63,6 +64,9 @@ display:
       position: 6
     time:
       position: 7
+    ipaddr:
+      path_to_ip: /sbin/ip
+      position: 8
 
 control:
   keyboard:
