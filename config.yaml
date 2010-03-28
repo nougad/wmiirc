@@ -5,14 +5,14 @@ import:
   - display/color/nougad
   - display/desktop/xsetroot
   - display/notice
+  - display/status/spacer
   - display/status/music/mpd
+  - display/status/volume/amixer
+  - display/status/power/acpi
   - display/status/network/vpn
   - display/status/network/ipaddr
-  - display/status/power/acpi
-  - display/status/spacer
   - display/status/system/loadavg
   - display/status/time
-  - display/status/volume/amixer
   - display/tags
 
 prefer:
@@ -45,20 +45,13 @@ display:
     - /wireshark/: ws
     - /.*Eclipse.*/: ecl
   status:
-    spacer:
-      position: 1
     mpd:
-      position: 2
       mouse_action:
         right_click: launch_gmpc
     vpn:
       device:   tun0
-      position: 3
     acpi:
       battery:   BAT0
-      position: 4
-    loadavg:
-      position: 5
     amixer:
       mixer:    Master
       position: 6
