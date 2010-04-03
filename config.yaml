@@ -73,6 +73,14 @@ control:
     group:   Mod4-g
     layout:  Mod4-z
     arrange: Mod4-Shift-z
+
+  keyboard_action:
+    ${mod}-o: run_program_from_menu
+    ${mod}-Return: launch_terminal
+    ${mod}-p: nil
+    XF86ScreenSaver: lock_display
+    Print: screenshot
+
   action:
     launch_terminal: |
       work = ENV['HOME']
@@ -82,4 +90,6 @@ control:
       end
     launch_gmpc: launch "gmpc"
     show_acpi_stats: dialog `acpitool`
+    lock_display: launch "xscreensaver-command", "-lock"
+    screenshot:   launch "scrot"
 
