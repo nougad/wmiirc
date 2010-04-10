@@ -1,5 +1,14 @@
 import:
   - control/keyboard/qwerty
+  - control/keyboard/qwerty/arrange
+  - control/keyboard/qwerty/detach
+  - control/keyboard/qwerty/focus
+  - control/keyboard/qwerty/group
+  - control/keyboard/qwerty/layout
+  - control/keyboard/qwerty/move
+  - control/keyboard/qwerty/zoom
+  - control/keyboard/generic/focus_by_number
+  - control/keyboard/generic/move_by_number
   - control/mouse
   - display/client
   - display/color/nougad
