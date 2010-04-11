@@ -7,8 +7,8 @@ import:
   - control/keyboard/qwerty/layout
   - control/keyboard/qwerty/move
   - control/keyboard/qwerty/zoom
-  - control/keyboard/generic/focus_by_number
-  - control/keyboard/generic/move_by_number
+  - control/keyboard/qwerty/focus_by_number
+  - control/keyboard/qwerty/move_by_number
   - control/mouse
   - display/client
   - display/color/nougad
