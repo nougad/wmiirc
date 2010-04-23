@@ -1,14 +1,16 @@
 import:
   - control/keyboard/qwerty
   - control/keyboard/qwerty/arrange
+  - control/keyboard/qwerty/client
   - control/keyboard/qwerty/detach
   - control/keyboard/qwerty/focus
+  - control/keyboard/qwerty/focus_by_number
   - control/keyboard/qwerty/group
   - control/keyboard/qwerty/layout
+  - control/keyboard/qwerty/menu
   - control/keyboard/qwerty/move
-  - control/keyboard/qwerty/zoom
-  - control/keyboard/qwerty/focus_by_number
   - control/keyboard/qwerty/move_by_number
+  - control/keyboard/qwerty/zoom
   - control/mouse
   - display/client
   - display/color/nougad
