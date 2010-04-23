@@ -20,7 +20,8 @@ script:
             @mutex.synchronize do
               Status.each do |x| x.stop_update end
               Rumai.fs.rbar.clear
-              Rumai.fs.rbar['!notice'].create
+              button = Rumai.fs.rbar['!notice']
+              button.create unless button.exist?
 
               # display the message
               button.write "#{CONFIG['display']['color']['notice']} #{message}"
