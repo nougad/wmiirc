@@ -71,6 +71,7 @@ script:
                 button_label.unshift CONFIG['display']['color']['normal']
               end
 
+              sleep while @stop_updating
               @button.colors = button_label.shift
               @button.label = button_label.join(' ')
 
@@ -81,6 +82,14 @@ script:
           # register this instance
           @@by_name[name] = self
           @@by_file[file] = self
+        end
+
+        def start_update
+          @stop_updating = false
+        end
+
+        def stop_update
+          @stop_updating = true
         end
 
         ##
