@@ -18,8 +18,9 @@ script:
             # prevent messages from clobbering
             # each other before their time is up
             @mutex.synchronize do
-              button = Rumai.fs.rbar['!notice']
-              button.create unless button.exist?
+              Status.each do |x| x.stop_update end
+              Rumai.fs.rbar.clear
+              Rumai.fs.rbar['!notice'].create
 
               # display the message
               button.write "#{CONFIG['display']['color']['notice']} #{message}"
@@ -27,7 +28,8 @@ script:
 
               # clear the notice
               sleep [1, CONFIG['display']['notice'].to_i].max
-              (Status['!notice']) ? Status['!notice'].refresh : button.remove
+              Status.each do |x| x.start_update end
+              Status.each do |x| x.refresh end
             end
           end
         end
