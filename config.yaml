@@ -27,7 +27,7 @@ import:
   - display/tags
 
 prefer:
-  terminal: urxvt
+  terminal: gnome-terminal
   browser: icecat
   editor: mousepad
   filer: thunar
@@ -97,7 +97,7 @@ control:
       work = ENV['HOME']
       require 'fileutils'
       FileUtils.cd work do
-        launch CONFIG['prefer']['terminal'], "-name", "shellwin"
+        launch CONFIG['prefer']['terminal']
       end
     launch_gmpc: launch "gmpc"
     show_acpi_stats: dialog `acpitool`
