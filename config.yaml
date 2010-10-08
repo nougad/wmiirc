@@ -103,6 +103,15 @@ control:
     show_acpi_stats: dialog `acpitool`
     lock_display: launch "xscreensaver-command", "-lock"
     screenshot:   launch "scrot"
+  event:
+    Urgent: |
+      id, type = argv
+
+      message =
+        case type
+        when 'Client' then Client.new(id).label.read
+        else id
+        end
 
 script:
   - after: |
