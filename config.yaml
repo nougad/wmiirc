@@ -46,7 +46,6 @@ display:
     - /.*psi.*/ : 1:im
     - /Pidgin.*/ : 1:im
     - /.*(CSSH|cssh).*/ : cssh
-    - /VLC.*/ : media
     - /Firefox.*/ : 4:web
     - /IceCat.*/ : 4:web
     - /shellwin.*/ : 3:shell
