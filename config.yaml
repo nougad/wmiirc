@@ -109,4 +109,5 @@ script:
   - after: |
       launch "xscreensaver"
       launch "mpd"
+      launch "seahorse-daemon"
 
