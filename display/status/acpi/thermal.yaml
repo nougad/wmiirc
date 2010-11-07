@@ -1,0 +1,60 @@
+import:
+  - display/status
+
+display:
+  status:
+    thermal:
+      refresh: 10
+
+      @themppath: "/sys/devices/virtual/thermal/thermal_zone*/temp"
+      @unit: "C"
+      @levels:
+        50: low
+        70: high
+        80: critical
+      @colors:
+        low: success
+        high: notice
+        critical: error
+
+      script: |
+        @current_index = 0
+
+        SENSORS = Dir[@themppath]
+
+        def next_themp
+          @current_index = (@current_index += 1) % SENSORS.length
+          File.read(SENSORS[@current_index]).strip.to_i / 1000
+        end
+
+        def level themp
+          # FIXME improve??
+          @levels.keys.sort.reverse.each do |k|
+            return @levels[k] if themp > k
+          end
+        end
+
+        def resolve_color rev
+          CONFIG['display']['color'][rev]
+        end
+
+        def color level
+          resolve_color @colors[level]
+        end
+
+        def message
+          t = next_themp
+          [color(level(t)), "#{@current_index}:", t, @unit]
+        end
+
+      label: |
+        message
+
+      mouse_action:
+        left_click: next_themp
+
+control:
+  action:
+    next_themp: |
+      refresh
+
