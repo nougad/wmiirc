@@ -20,6 +20,7 @@ import:
   - display/status/music/mpd
   - display/status/volume/amixer
   - display/status/power/acpi
+  - display/status/acpi/thermal
   - display/status/network/ipaddr
   - display/status/system/loadavg
   - display/status/time
