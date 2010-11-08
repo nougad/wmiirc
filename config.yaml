@@ -68,6 +68,9 @@ display:
     ipaddr:
       path_to_ip: /sbin/ip
       position: 8
+    thermal:
+      mouse_action:
+        right_click: toggle_ibm_fan
 
 control:
   keyboard:
@@ -101,6 +104,16 @@ control:
     show_acpi_stats: dialog `acpitool`
     lock_display: launch "xscreensaver-command", "-lock"
     screenshot:   launch "scrot"
+    toggle_ibm_fan: |
+      procfile = "/proc/acpi/ibm/fan"
+      status = File.read(procfile).gsub(/.*\nlevel:\t\t([a-z0-9]*)\n.*/m, "\\1")
+      File.open procfile, "w" do |f|
+        case status
+        when "auto"       then f.puts "level disengaged"
+        when "disengaged" then f.puts "level auto"
+        end
+      end
+
   event:
     Urgent: |
       id, type = argv
