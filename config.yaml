@@ -50,6 +50,7 @@ display:
     - /IceCat.*/ : 4:web
     - /shellwin.*/ : 3:shell
     - /Thunderbird:.*/ : 2:mail
+    - /claws-mail:.*/ : 2:mail
     - /Skype:.*/ : 1:im
     - /gimp/ : gimp
     - /wireshark/: ws
