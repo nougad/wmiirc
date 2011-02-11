@@ -55,6 +55,7 @@ display:
     - /gimp/ : gimp
     - /wireshark/: ws
     - /.*Eclipse.*/: ecl
+    - /.*trayer.*/: /.*/
   status:
     mpd:
       mouse_action:
