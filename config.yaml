@@ -135,4 +135,6 @@ script:
       launch "xscreensaver"
       launch "mpd"
       launch "seahorse-daemon"
+      ENVVARS=`gnome-keyring-daemon --components=pkcs11,secrets,ssh,gpg --start`
+      ENVVARS.each_line do |v| name, value = v.strip.split("="); ENV[name] = value; puts "setting #{name} to #{value}" end
 
