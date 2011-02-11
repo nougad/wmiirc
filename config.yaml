@@ -96,6 +96,10 @@ control:
     Print: screenshot
 
   action:
+    reload: |
+      launch "pkill mpd"
+      launch "pkill seahorse-daemon"
+      launch "pkill xscreensaver"
     launch_terminal: |
       work = ENV['HOME']
       require 'fileutils'
