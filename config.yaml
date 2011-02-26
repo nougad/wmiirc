@@ -18,11 +18,11 @@ import:
   - display/notice
   - display/status/spacer
   - display/status/music/mpd
-  - display/status/volume/amixer
-  - display/status/power/acpi
+  - display/status/volume
+  - display/status/power
   - display/status/acpi/thermal
-  - display/status/network/ipaddr
-  - display/status/system/loadavg
+  - display/status/network
+  - display/status/load
   - display/status/time
   - display/tags
 
@@ -34,7 +34,7 @@ prefer:
 
 display:
   bar: top
-  font: "-*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*"
+  font: "xft:Monospace:pixelsize=10"
   border: 1
   column:
     mode: default
@@ -43,33 +43,34 @@ display:
       /im/   -> 80+20
       /.*/ -> 62+38 # Golden Ratio
   client:
-    - /.*psi.*/ : 1:im
-    - /Pidgin.*/ : 1:im
-    - /.*(CSSH|cssh).*/ : cssh
-    - /Firefox.*/ : 4:web
-    - /IceCat.*/ : 4:web
-    - /shellwin.*/ : 3:shell
-    - /Thunderbird:.*/ : 2:mail
-    - /claws-mail:.*/ : 2:mail
-    - /Skype:.*/ : 1:im
-    - /gimp/ : gimp
-    - /wireshark/: ws
-    - /.*Eclipse.*/: ecl
-    - /.*trayer.*/: /.*/
+    rule: |
+      /psi/ tags=1:im
+      /Pidgin/ tags=1:im
+      /(CSSH|cssh)/ tags=cssh
+      /Firefox/ tags=4:web
+      /IceCat/ tags=4:web
+      /shellwin/ tags=3:shell
+      /Thunderbird:/ tags=2:mail
+      /claws-mail:/ tags=2:mail
+      /Skype:/ tags=1:im
+      /gimp/ tags=gimp
+      /wireshark/ tags=ws
+      /Eclipse/ tags=ecl
+      /trayer/ tags=/./
   status:
-    mpd:
-      mouse_action:
-        right_click: launch_gmpc
-    acpi:
+    music:
+      mpd:
+        mouse_action:
+          right_click: launch_gmpc
+    power:
       battery:   BAT0
-    amixer:
+    volume:
       mixer:    Master
-      position: 6
-    time:
-      position: 7
-    ipaddr:
-      path_to_ip: /sbin/ip
-      position: 8
+    network:
+      instances:
+        - interface: wlan0
+        - interface: eth0
+        - interface: tun0
     thermal:
       mouse_action:
         right_click: toggle_ibm_fan
