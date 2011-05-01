@@ -37,6 +37,13 @@ display:
 
           def mute!
             self.level = 'toggle'
+            if mute?
+              @previous = level
+              self.level= '0%'
+            else
+              self.level = @previous || '80%'
+            end
+            refresh
           end
 
         when /bsd/
