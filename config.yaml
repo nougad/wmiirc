@@ -1,27 +1,23 @@
 import:
   - control/keyboard/qwerty
-  - control/keyboard/qwerty/arrange
   - control/keyboard/qwerty/client
-  - control/keyboard/qwerty/detach
   - control/keyboard/qwerty/focus
   - control/keyboard/qwerty/focus_by_number
-  - control/keyboard/qwerty/group
   - control/keyboard/qwerty/layout
   - control/keyboard/qwerty/menu
   - control/keyboard/qwerty/move
   - control/keyboard/qwerty/move_by_number
-  - control/keyboard/qwerty/zoom
+  - control/keyboard/qwerty/resize
   - control/mouse
   - display/client
   - display/color/nougad
   - display/desktop/xsetroot
-  - display/notice
-  - display/status/spacer
+  - display/status/notice
   - display/status/music/mpd
   - display/status/volume
   - display/status/power
   - display/status/acpi/thermal
-  - display/status/network
+  - display/status/network/ipaddr
   - display/status/load
   - display/status/time
   - display/tags
@@ -60,17 +56,21 @@ display:
   status:
     music:
       mpd:
-        mouse_action:
-          right_click: launch_gmpc
+        @password: 
+        control:
+          mouse_action:
+            right_click: launch_gmpc
+          keyboard_action:
+            ${mod}-Return:
     power:
-      battery:   BAT0
+      @battery:   BAT0
     volume:
-      mixer:    Master
+      @mixer:    Master
     network:
       instances:
-        - interface: wlan0
-        - interface: eth0
-        - interface: tun0
+        - @interface: wlan0
+        - @interface: eth0
+        - @interface: tun0
     thermal:
       mouse_action:
         right_click: toggle_ibm_fan
@@ -132,14 +132,6 @@ control:
       system "xrandr --output LVDS1 --same-as VGA1 --auto"
 
   event:
-    Urgent: |
-      id, type = argv
-
-      message =
-        case type
-        when 'Client' then Client.new(id).label.read
-        else id
-        end
 
 script:
   - after: |
