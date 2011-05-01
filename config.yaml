@@ -71,6 +71,9 @@ display:
         - @interface: wlan0
         - @interface: eth0
         - @interface: tun0
+    dpmstest:
+      refresh: 60
+      label: system('xset q | grep "DPMS is Enabled"')
     thermal:
       mouse_action:
         right_click: toggle_ibm_fan
