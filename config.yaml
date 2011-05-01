@@ -121,6 +121,15 @@ control:
         when "disengaged" then f.puts "level auto"
         end
       end
+    laptop: |
+      system "xrandr --output HDMI2 --off"
+      system "xrandr --output LVDS1 --auto"
+    desktop: |
+      system "xrandr --output HDMI2 --auto"
+      system "xrandr --output LVDS1 --right-of HDMI2 --auto"
+    projector: |
+      system "xrandr --output VGA1 --auto"
+      system "xrandr --output LVDS1 --same-as VGA1 --auto"
 
   event:
     Urgent: |
