@@ -146,10 +146,23 @@ control:
       end
 
 script:
+  - before: |
+      action "desktop" if File.read("/sys/devices/platform/dock.0/docked").strip == "1"
   - after: |
-      launch "xscreensaver"
-      launch "mpd"
-      launch "seahorse-daemon"
+      launch "pgrep xscreensaver || xscreensaver"
+      launch "pgrep seahorse-daemon || seahorse-daemon"
+      launch "pgrep witray || witray"
+      launch "pgrep nm-applet || nm-applet"
+      launch "pgrep gonme-power-manager || gnome-power-manager"
+      launch "pgrep mutt || gnome-terminal --command 'bash -ic mutt'"
       ENVVARS=`gnome-keyring-daemon --components=pkcs11,secrets,ssh,gpg --start`
-      ENVVARS.each_line do |v| name, value = v.strip.split("="); ENV[name] = value; puts "setting #{name} to #{value}" end
+      ENVVARS.each_line do |v|
+        name, value = v.strip.split("=")
+        ENV[name] = value
+        puts "setting #{name} to #{value}"
+      end
+      sleep 1
+      system "xrandr --dpi 85"
+      system "xset +dpms"
+      system "xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 
