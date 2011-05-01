@@ -135,6 +135,15 @@ control:
       system "xrandr --output LVDS1 --same-as VGA1 --auto"
 
   event:
+    CreateClient: |
+      id = argv.first
+      LOG.info "new client #{id}"
+      sleep 1
+      if Rumai.fs.client[id].exist?
+        LOG.info Rumai.fs.client[id].props.read
+      else
+        LOG.info "not exist"
+      end
 
 script:
   - after: |
