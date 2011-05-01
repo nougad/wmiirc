@@ -11,7 +11,7 @@ control:
 
     rehash: |
       # scan for available programs and actions
-      @programs = find_programs(ENV['PATH'].squeeze(':').split(':'))
+      @programs = find_programs(ENV['PATH'].gsub(/\$([A-Z0-9_]+)/) do |x| ENV[x[1..-1]] end.squeeze(':').split(':'))
 
     clear: |
       # these browsers' "restore session" feature does

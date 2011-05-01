@@ -51,7 +51,7 @@ module Wmiirc
       command = "wihack #{wihack_argv.shelljoin} #{command}"
     end
 
-    system "#{command} &"
+    system "PATH=#{ENV['PATH']} #{command} &"
   end
 
   ##
